@@ -19,7 +19,7 @@ RUN yarn --production
 
 ###############################################################
 
-FROM node:16-alpine as runtime
+FROM node:22-alpine as runtime
 
 ENV NODE_ENV production
 
