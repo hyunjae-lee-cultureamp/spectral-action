@@ -1,4 +1,4 @@
-FROM node:16 as builder
+FROM node:22 as builder
 
 COPY package.json yarn.lock ./
 RUN yarn
@@ -11,14 +11,11 @@ RUN yarn build
 
 ###############################################################
 
-FROM node:16 as dependencies
+FROM node:22 as dependencies
 
 ENV NODE_ENV production
 COPY package.json yarn.lock ./
 RUN yarn --production
-
-RUN curl -sf https://gobinaries.com/tj/node-prune | sh
-RUN node-prune
 
 ###############################################################
 
